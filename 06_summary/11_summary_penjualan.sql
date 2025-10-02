@@ -15,7 +15,7 @@ WHERE p.kode NOT IN (
 -- ===========================================
 SELECT mp.brand, SUM(dtp.qty) AS total_qty
 FROM detail_transaksi dtp
-JOIN master_produk mp ON dtp.kode_produk = mp.kode_produk
+JOIN master_product mp ON dtp.kode_produk = mp.kode
 JOIN transaksi_penjualan tp ON dtp.nomor_penjualan = tp.nomor_penjualan
 GROUP BY mp.brand
 ORDER BY total_qty DESC;
@@ -24,7 +24,7 @@ ORDER BY total_qty DESC;
 -- 3. Tambahkan Kolom status_penjualan pada Transaksi Penjualan
 -- ===========================================
 ALTER TABLE transaksi_penjualan
-ADD COLUMN IF NOT EXISTS status_penjualan VARCHAR(10) DEFAULT 'DONE';
+ADD COLUMN status_penjualan VARCHAR(10) DEFAULT 'DONE';
 
 -- ===========================================
 -- 4. Update status_penjualan secara random

@@ -91,7 +91,7 @@ WHERE p.kode NOT IN (
 ```sql
 SELECT mp.brand, SUM(dtp.qty) AS total_qty
 FROM detail_transaksi_penjualan dtp
-JOIN master_produk mp ON dtp.kode_produk = mp.kode
+JOIN master_product mp ON dtp.kode_produk = mp.kode
 JOIN transaksi_penjualan tp ON dtp.nomor_penjualan = tp.nomor_penjualan
 GROUP BY mp.brand
 ORDER BY total_qty DESC;
